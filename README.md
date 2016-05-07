@@ -8,7 +8,7 @@ An Android kickstarter project including the following libraries:
 * [Dagger2](http://google.github.io/dagger/)
 * [Otto](http://square.github.io/otto/)
 
-### Use
+### Useage
 Clone the repo
 ```
 git clone https://github.com/andrea-rosa/kickstarter-android
