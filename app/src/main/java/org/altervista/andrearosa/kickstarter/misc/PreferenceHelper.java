@@ -17,10 +17,8 @@ public class PreferenceHelper {
 
     public static void setString(String key, String value, Context context) {
         try {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putString(key, value);
-            editor.apply();
+            getEditor(context).putString(key, value);
+            getEditor(context).apply();
         } catch (Exception e) {
             Log.e(TAG, "Error in setString for key: " + key + " - value: " + value);
             e.printStackTrace();
@@ -33,10 +31,8 @@ public class PreferenceHelper {
 
     public static void setInt(String key, int value, Context context) {
         try {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putInt(key, value);
-            editor.apply();
+            getEditor(context).putInt(key, value);
+            getEditor(context).apply();
         } catch (Exception e) {
             Log.e(TAG, "Error in setInt for key: " + key + " - value: " + value);
             e.printStackTrace();
@@ -49,10 +45,8 @@ public class PreferenceHelper {
 
     public static void setFloat(String key, float value, Context context) {
         try {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putFloat(key, value);
-            editor.apply();
+            getEditor(context).putFloat(key, value);
+            getEditor(context).apply();
         } catch (Exception e) {
             Log.e(TAG, "Error in setFloat for key: " + key + " - value: " + value);
             e.printStackTrace();
@@ -65,10 +59,8 @@ public class PreferenceHelper {
 
     public static void setLong(String key, long value, Context context) {
         try {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putLong(key, value);
-            editor.apply();
+            getEditor(context).putLong(key, value);
+            getEditor(context).apply();
         } catch (Exception e) {
             Log.e(TAG, "Error in setLong for key: " + key + " - value: " + value);
             e.printStackTrace();
@@ -81,10 +73,8 @@ public class PreferenceHelper {
 
     public static void setBoolean(String key, boolean value, Context context) {
         try {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean(key, value);
-            editor.apply();
+            getEditor(context).putBoolean(key, value);
+            getEditor(context).apply();
         } catch (Exception e) {
             Log.e(TAG, "Error in setBoolean for key: " + key + " - value: " + value);
             e.printStackTrace();
@@ -97,10 +87,8 @@ public class PreferenceHelper {
 
     public static void setStringSet(String key, Set<String> values, Context context) {
         try {
-            SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putStringSet(key, values);
-            editor.apply();
+            getEditor(context).putStringSet(key, values);
+            getEditor(context).apply();
         } catch (Exception e) {
             Log.e(TAG, "Error in setString for key: " + key + " - values: " + values);
             e.printStackTrace();
@@ -111,5 +99,8 @@ public class PreferenceHelper {
         return PreferenceManager.getDefaultSharedPreferences(context).getStringSet(key, defValues);
     }
 
+    private static SharedPreferences.Editor getEditor(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).edit();
+    }
 
 }
