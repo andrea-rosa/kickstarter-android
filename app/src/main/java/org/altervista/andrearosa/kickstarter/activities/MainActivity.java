@@ -11,7 +11,7 @@ import com.squareup.otto.Subscribe;
 import org.altervista.andrearosa.kickstarter.R;
 import org.altervista.andrearosa.kickstarter.events.MainThreadBus;
 import org.altervista.andrearosa.kickstarter.events.TitleEvent;
-import org.altervista.andrearosa.kickstarter.fragments.HomeFragment;
+import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
 import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
 import org.altervista.andrearosa.kickstarter.misc.Utils;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         bus.register(this);
         setSupportActionBar(toolbar);
-        Utils.fragmentTransaction(new HomeFragment(), R.id.flContent, HomeFragment.TAG, false, getSupportFragmentManager());
+        Utils.fragmentTransaction(new PostsFragment(), R.id.flContent, PostsFragment.TAG, false, getSupportFragmentManager());
     }
 
     @Subscribe

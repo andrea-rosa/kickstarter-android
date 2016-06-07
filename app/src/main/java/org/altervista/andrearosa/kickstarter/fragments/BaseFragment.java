@@ -31,20 +31,14 @@ public class BaseFragment extends Fragment {
     @Inject
     MainThreadBus bus;
 
-    private int layout;
+    protected int layout = 0;
 
     protected List<Call> calls = new ArrayList<>();
 
-    public BaseFragment() {
-        this.layout = 0;
-    }
-
-    public BaseFragment(int layout) {
-        this.layout = layout;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if(layout == 0)
+            throw new IllegalArgumentException("Layout must be initialized first!");
         View v = inflater.inflate(layout, container, false);
         ButterKnife.bind(this, v);
         (((KickstarterApp) getActivity().getApplication()).getApplicationComponent()).inject(BaseFragment.this);

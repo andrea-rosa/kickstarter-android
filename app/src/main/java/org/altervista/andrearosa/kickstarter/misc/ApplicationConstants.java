@@ -6,5 +6,5 @@ package org.altervista.andrearosa.kickstarter.misc;
  * kickstarter-android.
  */
 public class ApplicationConstants {
-    public static final String BASE_URL = "http://127.0.0.1/";
+    public static final String BASE_URL = "http://jsonplaceholder.typicode.com/";
 }

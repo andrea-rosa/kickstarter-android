@@ -22,12 +22,11 @@ public class HomeFragment extends BaseFragment {
     @Bind(R.id.fragmentHome_textView)
     TextView textView;
 
-    public HomeFragment() {
-        super(R.layout.fragment_home);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // !Important! Always set the layout before inflate view
+        this.layout = R.layout.fragment_home;
+
         View v = super.onCreateView(inflater, container, savedInstanceState);
         textView.setText(getString(R.string.app_name));
         return v;

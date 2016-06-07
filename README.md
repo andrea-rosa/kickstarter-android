@@ -11,20 +11,22 @@ An Android kickstarter project including the following libraries:
 ### Usage
 Clone the repo
 ```bash
-git clone https://github.com/andrea-rosa/kickstarter-android
+git clone https://github.com/andrea-rosa/kickstarter-android.git
 ```
 Then open it in Android Studio and wait for gradle build
 
 ### Fragments
 Define your layout (e.g. `fragment_home`)  
 Create a class and extend `BaseFragment`  
-Define the constructor and call `super` passing layout as a parameter
+Override `onCreateView` and initialize `layout` before inflate the view
 ```java
 public class HomeFragment extends BaseFragment {
    ...
-   public HomeFragment() {
-       super(R.layout.fragment_home);
-   }
+   @Override
+       public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+           this.layout = R.layout.fragment_home;
+           return super.onCreateView(inflater, container, savedInstanceState);
+       }
    ...
 }
 ```
