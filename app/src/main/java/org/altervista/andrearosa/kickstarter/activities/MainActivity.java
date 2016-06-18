@@ -21,8 +21,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import retrofit2.Call;
 
 /**
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Inject
@@ -44,13 +45,15 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Call> calls = new ArrayList<>();
 
+    private Unbinder unbinder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         (((KickstarterApp) getApplication()).getApplicationComponent()).inject(MainActivity.this);
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         bus.register(this);
         setSupportActionBar(toolbar);
         Utils.fragmentTransaction(new PostsFragment(), R.id.flContent, PostsFragment.TAG, false, getSupportFragmentManager());
@@ -93,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
         bus.unregister(this);
     }
 }

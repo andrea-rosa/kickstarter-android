@@ -9,7 +9,7 @@ import android.widget.TextView;
 import org.altervista.andrearosa.kickstarter.R;
 import org.altervista.andrearosa.kickstarter.events.TitleEvent;
 
-import butterknife.Bind;
+import butterknife.BindView;
 
 /**
  * Created by andre on 18/04/16.
@@ -19,7 +19,7 @@ import butterknife.Bind;
 public class HomeFragment extends BaseFragment {
     public static final String TAG = "HomeFragment";
 
-    @Bind(R.id.fragmentHome_textView)
+    @BindView(R.id.fragmentHome_textView)
     TextView textView;
 
     @Override

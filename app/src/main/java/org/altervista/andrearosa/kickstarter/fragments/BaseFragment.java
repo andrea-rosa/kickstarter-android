@@ -16,11 +16,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import retrofit2.Call;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class BaseFragment extends Fragment {
@@ -35,12 +36,14 @@ public class BaseFragment extends Fragment {
 
     protected List<Call> calls = new ArrayList<>();
 
+    private Unbinder unbinder;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(layout == 0)
-            throw new IllegalArgumentException("Layout must be initialized first!");
+        if (layout == 0)
+            throw new IllegalStateException("Layout must be initialized first!");
         View v = inflater.inflate(layout, container, false);
-        ButterKnife.bind(this, v);
+        unbinder = ButterKnife.bind(this, v);
         (((KickstarterApp) getActivity().getApplication()).getApplicationComponent()).inject(BaseFragment.this);
         bus.register(this);
         try {
@@ -57,7 +60,7 @@ public class BaseFragment extends Fragment {
         for (Call call : calls) {
             call.cancel();
         }
-        ButterKnife.unbind(this);
+        unbinder.unbind();
         bus.unregister(this);
     }
 }

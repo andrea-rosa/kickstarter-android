@@ -21,24 +21,24 @@ import org.altervista.andrearosa.kickstarter.misc.DividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class PostsFragment extends BaseFragment {
     public static final String TAG = "PostsFragment";
 
-    @Bind(R.id.posts_recyclerView)
+    @BindView(R.id.posts_recyclerView)
     RecyclerView recyclerView;
-    @Bind(R.id.posts_progressBar)
+    @BindView(R.id.posts_progressBar)
     ProgressBar progressBar;
-    @Bind(R.id.posts_emptyTextView)
+    @BindView(R.id.posts_emptyTextView)
     TextView textView;
 
     private PostAdapter adapter;
@@ -47,7 +47,6 @@ public class PostsFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // !Important! Always set the layout before inflate view
         this.layout = R.layout.fragment_posts;
 
         View v = super.onCreateView(inflater, container, savedInstanceState);
