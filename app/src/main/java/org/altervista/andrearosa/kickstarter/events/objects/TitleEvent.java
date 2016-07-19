@@ -1,8 +1,8 @@
-package org.altervista.andrearosa.kickstarter.events;
+package org.altervista.andrearosa.kickstarter.events.objects;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class TitleEvent {

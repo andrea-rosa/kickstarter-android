@@ -6,11 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.squareup.otto.Subscribe;
-
 import org.altervista.andrearosa.kickstarter.R;
-import org.altervista.andrearosa.kickstarter.events.MainThreadBus;
-import org.altervista.andrearosa.kickstarter.events.TitleEvent;
+import org.altervista.andrearosa.kickstarter.events.RxBus;
+import org.altervista.andrearosa.kickstarter.events.objects.TitleEvent;
 import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
 import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
 import org.altervista.andrearosa.kickstarter.misc.Utils;
@@ -25,10 +23,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Call;
+import rx.functions.Action1;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     RestClient restClient;
     @Inject
-    MainThreadBus bus;
+    RxBus bus;
 
     private List<Call> calls = new ArrayList<>();
 
@@ -54,17 +53,22 @@ public class MainActivity extends AppCompatActivity {
 
         (((KickstarterApp) getApplication()).getApplicationComponent()).inject(MainActivity.this);
         unbinder = ButterKnife.bind(this);
-        bus.register(this);
         setSupportActionBar(toolbar);
-        Utils.fragmentTransaction(new PostsFragment(), R.id.flContent, PostsFragment.TAG, false, getSupportFragmentManager());
-    }
 
-    @Subscribe
-    public void setTitle(TitleEvent event) {
-        if (event != null && event.getTitle() != null)
-            toolbar.setTitle(event.getTitle());
-        else
-            toolbar.setTitle(R.string.app_name);
+        bus.toObserverable()
+                .subscribe(new Action1<Object>() {
+                    @Override
+                    public void call(Object event) {
+                        if (event instanceof TitleEvent) {
+                            if (((TitleEvent) event).getTitle() != null && toolbar != null)
+                                toolbar.setTitle(((TitleEvent) event).getTitle());
+                            else if (toolbar != null)
+                                toolbar.setTitle(R.string.app_name);
+                        }
+                    }
+                });
+
+        Utils.fragmentTransaction(new PostsFragment(), R.id.flContent, PostsFragment.TAG, false, getSupportFragmentManager());
     }
 
     @Override
@@ -97,6 +101,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-        bus.unregister(this);
     }
 }

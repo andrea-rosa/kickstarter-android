@@ -8,7 +8,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 @Qualifier

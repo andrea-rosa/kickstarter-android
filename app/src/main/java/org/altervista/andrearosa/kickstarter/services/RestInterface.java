@@ -11,7 +11,7 @@ import retrofit2.http.GET;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public interface RestInterface {
@@ -19,8 +19,10 @@ public interface RestInterface {
     // XXX test api
     @GET("users")
     Call<List<User>> getUsers();
+
     @GET("photos")
     Call<List<Photo>> getPhotos();
+
     @GET("posts")
     Call<List<Post>> getPosts();
 

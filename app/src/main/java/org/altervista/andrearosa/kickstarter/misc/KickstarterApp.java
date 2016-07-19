@@ -4,7 +4,7 @@ import android.app.Application;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class KickstarterApp extends Application {

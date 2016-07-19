@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.altervista.andrearosa.kickstarter.events.MainThreadBus;
+import org.altervista.andrearosa.kickstarter.events.RxBus;
 import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
 
@@ -30,7 +30,7 @@ public class BaseFragment extends Fragment {
     RestClient restClient;
 
     @Inject
-    MainThreadBus bus;
+    RxBus bus;
 
     protected int layout = 0;
 
@@ -45,7 +45,6 @@ public class BaseFragment extends Fragment {
         View v = inflater.inflate(layout, container, false);
         unbinder = ButterKnife.bind(this, v);
         (((KickstarterApp) getActivity().getApplication()).getApplicationComponent()).inject(BaseFragment.this);
-        bus.register(this);
         try {
             v.getRootView().setOnClickListener(null);
         } catch (Exception e) {
@@ -61,6 +60,5 @@ public class BaseFragment extends Fragment {
             call.cancel();
         }
         unbinder.unbind();
-        bus.unregister(this);
     }
 }

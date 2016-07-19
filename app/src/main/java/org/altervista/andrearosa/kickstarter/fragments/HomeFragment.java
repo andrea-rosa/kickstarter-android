@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.altervista.andrearosa.kickstarter.R;
-import org.altervista.andrearosa.kickstarter.events.TitleEvent;
+import org.altervista.andrearosa.kickstarter.events.objects.TitleEvent;
 
 import butterknife.BindView;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class HomeFragment extends BaseFragment {
@@ -35,6 +35,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        bus.post(new TitleEvent(getString(R.string.app_name)));
+        bus.send(new TitleEvent(getString(R.string.app_name)));
     }
 }

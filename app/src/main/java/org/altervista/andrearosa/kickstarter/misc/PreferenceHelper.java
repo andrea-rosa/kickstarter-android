@@ -9,7 +9,7 @@ import java.util.Set;
 
 /**
  * Created by andre on 08/05/16.
- * <p>
+ * <p/>
  * kickstarter-android.
  */
 public class PreferenceHelper {

@@ -1,4 +1,3 @@
-
 package org.altervista.andrearosa.kickstarter.dto;
 
 import com.google.gson.annotations.Expose;

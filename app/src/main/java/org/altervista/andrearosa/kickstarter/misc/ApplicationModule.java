@@ -2,7 +2,7 @@ package org.altervista.andrearosa.kickstarter.misc;
 
 import android.content.Context;
 
-import org.altervista.andrearosa.kickstarter.events.MainThreadBus;
+import org.altervista.andrearosa.kickstarter.events.RxBus;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
 
 import javax.inject.Singleton;
@@ -12,7 +12,7 @@ import dagger.Provides;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 @Module
@@ -40,7 +40,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    MainThreadBus provideBus() {
-        return new MainThreadBus();
+    RxBus provideBus() {
+        return new RxBus();
     }
 }

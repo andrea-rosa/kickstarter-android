@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class RestClient {

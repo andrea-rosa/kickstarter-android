@@ -10,7 +10,7 @@ import org.altervista.andrearosa.kickstarter.fragments.BaseFragment;
 
 /**
  * Created by andre on 18/04/16.
- *
+ * <p/>
  * kickstarter-android.
  */
 public class Utils {
