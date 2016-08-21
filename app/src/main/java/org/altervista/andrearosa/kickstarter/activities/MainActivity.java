@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.altervista.andrearosa.kickstarter.R;
+import org.altervista.andrearosa.kickstarter.dialogs.ConfirmationDialog;
 import org.altervista.andrearosa.kickstarter.events.RxBus;
 import org.altervista.andrearosa.kickstarter.events.objects.TitleEvent;
 import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
@@ -82,6 +84,24 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            ConfirmationDialog dialog = ConfirmationDialog.newInstance(
+                    "Title",
+                    "You clicked on settings.",
+                    "OK",
+                    "Cancel",
+                    new ConfirmationDialog.DialogListener() {
+                        @Override
+                        public void onConfirm() {
+                            Toast.makeText(getApplicationContext(), "Clicked on OK", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onCancel() {
+                            Toast.makeText(getApplicationContext(), "Clicked on Cancel", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            );
+            dialog.show(getSupportFragmentManager(), "DIALOG");
             return true;
         }
 
