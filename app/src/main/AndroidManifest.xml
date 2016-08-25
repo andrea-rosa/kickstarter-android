@@ -12,16 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity"
-            android:configChanges="orientation|screenSize"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.NoFullScreen">
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.NoFullScreen" />
     </application>
 
 </manifest>
