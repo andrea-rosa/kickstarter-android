@@ -1,4 +1,4 @@
-package org.altervista.andrearosa.kickstarter.events.objects;
+package org.altervista.andrearosa.kickstarter.events;
 
 /**
  * Created by andre on 18/04/16.

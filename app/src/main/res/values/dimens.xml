@@ -9,4 +9,5 @@
     <dimen name="item_padding">8dp</dimen>
     <dimen name="image_width">200dp</dimen>
     <dimen name="image_height">200dp</dimen>
+    <dimen name="nav_header_height">200dp</dimen>
 </resources>

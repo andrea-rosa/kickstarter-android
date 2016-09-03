@@ -2,4 +2,9 @@
     <string name="app_name">Kickstarter</string>
     <string name="action_settings">Settings</string>
     <string name="empty_list">Sorry, nothing to show!</string>
+    <string name="home_fragment">Home fragment</string>
+    <string name="posts_fragment">Posts fragment</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>

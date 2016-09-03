@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import org.altervista.andrearosa.kickstarter.R;
-import org.altervista.andrearosa.kickstarter.events.objects.TitleEvent;
+import org.altervista.andrearosa.kickstarter.events.TitleEvent;
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 
@@ -35,6 +36,6 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        bus.send(new TitleEvent(getString(R.string.app_name)));
+        EventBus.getDefault().post(new TitleEvent(getString(R.string.app_name)));
     }
 }

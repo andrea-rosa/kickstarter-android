@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.altervista.andrearosa.kickstarter.events.RxBus;
 import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
 
@@ -28,9 +27,6 @@ public class BaseFragment extends Fragment {
 
     @Inject
     RestClient restClient;
-
-    @Inject
-    RxBus bus;
 
     protected int layout = 0;
 

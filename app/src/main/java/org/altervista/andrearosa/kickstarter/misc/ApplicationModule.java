@@ -2,7 +2,6 @@ package org.altervista.andrearosa.kickstarter.misc;
 
 import android.content.Context;
 
-import org.altervista.andrearosa.kickstarter.events.RxBus;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
 
 import javax.inject.Singleton;
@@ -38,9 +37,4 @@ public class ApplicationModule {
         return new RestClient(provideApplicationContext());
     }
 
-    @Provides
-    @Singleton
-    RxBus provideBus() {
-        return new RxBus();
-    }
 }

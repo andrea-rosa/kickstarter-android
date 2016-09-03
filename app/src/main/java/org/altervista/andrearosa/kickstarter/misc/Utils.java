@@ -33,7 +33,7 @@ public class Utils {
                                            boolean inStack, @NonNull FragmentManager fragmentManager) {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        ft.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         ft.add(fragmentId, fragment, tag);
         if (inStack)
             ft.addToBackStack(tag);
@@ -45,7 +45,8 @@ public class Utils {
 
         fragment.setArguments(bundle);
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+//        ft.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+        ft.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
         ft.add(fragmentId, fragment, tag);
         if (inStack)
             ft.addToBackStack(tag);

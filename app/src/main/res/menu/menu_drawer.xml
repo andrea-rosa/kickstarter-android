@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home_fragment"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="@string/home_fragment" />
+        <item
+            android:id="@+id/nav_posts_fragment"
+            android:icon="@android:drawable/ic_dialog_dialer"
+            android:title="@string/posts_fragment" />
+    </group>
+</menu>

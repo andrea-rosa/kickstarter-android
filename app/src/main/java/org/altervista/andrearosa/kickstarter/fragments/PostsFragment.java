@@ -15,8 +15,9 @@ import org.altervista.andrearosa.kickstarter.R;
 import org.altervista.andrearosa.kickstarter.adapters.PostAdapter;
 import org.altervista.andrearosa.kickstarter.dto.Post;
 import org.altervista.andrearosa.kickstarter.dto.User;
-import org.altervista.andrearosa.kickstarter.events.objects.TitleEvent;
+import org.altervista.andrearosa.kickstarter.events.TitleEvent;
 import org.altervista.andrearosa.kickstarter.misc.DividerItemDecoration;
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,6 +127,6 @@ public class PostsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        bus.send(new TitleEvent(getString(R.string.app_name)));
+        EventBus.getDefault().post(new TitleEvent(getString(R.string.app_name)));
     }
 }

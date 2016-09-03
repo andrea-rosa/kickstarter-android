@@ -6,7 +6,7 @@ An Android kickstarter project including the following libraries:
 * [Picasso](http://square.github.io/picasso/)
 * [Parceler](https://github.com/johncarl81/parceler)
 * [Dagger2](http://google.github.io/dagger/)
-* [RxAndroid](https://github.com/ReactiveX/RxAndroid)
+* [EventBus](http://greenrobot.org/eventbus/)
 
 ### Usage
 Clone the repo

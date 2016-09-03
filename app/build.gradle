@@ -53,7 +53,6 @@ dependencies {
     compile 'com.google.dagger:dagger:2.2'
     provided 'javax.annotation:jsr250-api:1.0'
 
-    // RxAndroid
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
+    // EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
