@@ -1,5 +1,6 @@
 package org.altervista.andrearosa.kickstarter.activities;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -12,13 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import org.altervista.andrearosa.kickstarter.R;
 import org.altervista.andrearosa.kickstarter.dialogs.ConfirmationDialog;
 import org.altervista.andrearosa.kickstarter.events.TitleEvent;
-import org.altervista.andrearosa.kickstarter.fragments.BaseFragment;
 import org.altervista.andrearosa.kickstarter.fragments.HomeFragment;
+import org.altervista.andrearosa.kickstarter.fragments.LoginFragment;
 import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
 import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
 import org.altervista.andrearosa.kickstarter.misc.Utils;
@@ -80,20 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
                 clearBackStack();
 
-                BaseFragment fragment = null;
-                String tag;
                 switch (item.getItemId()) {
-                    case R.id.nav_posts_fragment:
-                        fragment = new PostsFragment();
-                        tag = PostsFragment.TAG;
+                    case R.id.nav_login_fragment:
+                        Utils.fragmentTransaction(new LoginFragment(), R.id.flContent, LoginFragment.TAG, true, getSupportFragmentManager());
                         break;
-                    default:
-                        fragment = new HomeFragment();
-                        tag = HomeFragment.TAG;
+                    case R.id.nav_posts_fragment:
+                        Utils.fragmentTransaction(new PostsFragment(), R.id.flContent, PostsFragment.TAG, true, getSupportFragmentManager());
                         break;
                 }
-
-                Utils.fragmentTransaction(fragment, R.id.flContent, tag, true, getSupportFragmentManager());
 
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
@@ -104,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
 
-        //Utils.fragmentTransaction(new HomeFragment(), R.id.flContent, HomeFragment.TAG, false, getSupportFragmentManager());
+        Utils.fragmentTransaction(new HomeFragment(), R.id.flContent, HomeFragment.TAG, false, getSupportFragmentManager());
     }
 
     @Subscribe
@@ -161,6 +157,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void hideKeyboard() {
+        if (getCurrentFocus() != null && getCurrentFocus().getWindowToken() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawers();
+        else {
+            super.onBackPressed();
+            hideKeyboard();
+            if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                if (nvView != null && nvView.getMenu() != null)
+                    nvView.getMenu().getItem(0).setChecked(true);
+            }
+        }
     }
 
     @Override

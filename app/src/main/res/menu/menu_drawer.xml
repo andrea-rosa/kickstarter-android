@@ -3,11 +3,18 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home_fragment"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:checked="true"
+            android:icon="@drawable/ic_home"
             android:title="@string/home_fragment" />
+
+        <item
+            android:id="@+id/nav_login_fragment"
+            android:icon="@drawable/ic_person"
+            android:title="@string/login_fragment" />
+
         <item
             android:id="@+id/nav_posts_fragment"
-            android:icon="@android:drawable/ic_dialog_dialer"
+            android:icon="@drawable/ic_view_list"
             android:title="@string/posts_fragment" />
     </group>
 </menu>
