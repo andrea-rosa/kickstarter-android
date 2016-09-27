@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
+import org.altervista.andrearosa.kickstarter.misc.App;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class BaseFragment extends Fragment {
             throw new IllegalStateException("Layout must be initialized first!");
         View v = inflater.inflate(layout, container, false);
         unbinder = ButterKnife.bind(this, v);
-        (((KickstarterApp) getActivity().getApplication()).getApplicationComponent()).inject(BaseFragment.this);
+        (((App) getActivity().getApplication()).getApplicationComponent()).inject(BaseFragment.this);
         try {
             v.getRootView().setOnClickListener(null);
         } catch (Exception e) {

@@ -30,12 +30,7 @@ public class HomeFragment extends BaseFragment {
 
         View v = super.onCreateView(inflater, container, savedInstanceState);
         textView.setText(getString(R.string.app_name));
-        return v;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         EventBus.getDefault().post(new TitleEvent(getString(R.string.app_name)));
+        return v;
     }
 }

@@ -12,8 +12,8 @@ import java.util.Set;
  * <p/>
  * kickstarter-android.
  */
-public class PreferenceHelper {
-    public static final String TAG = "PreferenceHelper";
+public class PrefHelper {
+    public static final String TAG = "PrefHelper";
 
     public static void setString(String key, String value, Context context) {
         try {

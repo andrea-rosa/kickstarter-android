@@ -23,6 +23,7 @@ public class ConfirmationDialog extends DialogFragment {
 
     public interface DialogListener {
         void onConfirm();
+
         void onCancel();
     }
 

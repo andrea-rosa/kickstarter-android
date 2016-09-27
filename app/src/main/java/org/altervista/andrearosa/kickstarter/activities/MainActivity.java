@@ -22,7 +22,7 @@ import org.altervista.andrearosa.kickstarter.events.TitleEvent;
 import org.altervista.andrearosa.kickstarter.fragments.HomeFragment;
 import org.altervista.andrearosa.kickstarter.fragments.LoginFragment;
 import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
-import org.altervista.andrearosa.kickstarter.misc.KickstarterApp;
+import org.altervista.andrearosa.kickstarter.misc.App;
 import org.altervista.andrearosa.kickstarter.misc.Utils;
 import org.altervista.andrearosa.kickstarter.services.RestClient;
 import org.greenrobot.eventbus.EventBus;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        (((KickstarterApp) getApplication()).getApplicationComponent()).inject(MainActivity.this);
+        (((App) getApplication()).getApplicationComponent()).inject(MainActivity.this);
         unbinder = ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 

@@ -7,7 +7,7 @@ import android.app.Application;
  * <p/>
  * kickstarter-android.
  */
-public class KickstarterApp extends Application {
+public class App extends Application {
     private ApplicationComponent applicationComponent;
 
     @Override

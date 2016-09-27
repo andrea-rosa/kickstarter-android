@@ -18,9 +18,9 @@ import dagger.Provides;
 public class ApplicationModule {
     private static final String TAG = "ApplicationModule";
 
-    private final KickstarterApp application;
+    private final App application;
 
-    public ApplicationModule(KickstarterApp application) {
+    public ApplicationModule(App application) {
         this.application = application;
     }
 

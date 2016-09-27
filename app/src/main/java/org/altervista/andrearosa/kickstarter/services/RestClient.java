@@ -11,7 +11,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
-import org.altervista.andrearosa.kickstarter.misc.ApplicationConstants;
+import org.altervista.andrearosa.kickstarter.misc.AppConstants;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +43,7 @@ public class RestClient {
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(ApplicationConstants.BASE_URL)
+                    .baseUrl(AppConstants.BASE_URL)
                     .client(httpClient)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();

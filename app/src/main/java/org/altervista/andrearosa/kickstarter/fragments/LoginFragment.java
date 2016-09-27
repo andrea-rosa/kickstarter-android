@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import org.altervista.andrearosa.kickstarter.R;
-import org.altervista.andrearosa.kickstarter.events.TitleEvent;
-import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 
@@ -19,7 +19,7 @@ import butterknife.BindView;
  * <p/>
  * kickstarter-android.
  */
-public class LoginFragment extends BaseFragment {
+public class LoginFragment extends BaseFragment implements View.OnClickListener {
     public static final String TAG = "LoginFragment";
 
     @BindView(R.id.fragmentLogin_layout)
@@ -30,6 +30,12 @@ public class LoginFragment extends BaseFragment {
     TextInputEditText passwordEditText;
     @BindView(R.id.fragmentLogin_loginButton)
     Button loginButton;
+    @BindView(R.id.fragmentLogin_rememberMeCheckBox)
+    CheckBox rememberMeCheckBox;
+    @BindView(R.id.fragmentLogin_forgotPasswordButton)
+    Button forgotPasswordButton;
+    @BindView(R.id.fragmentLogin_registerButton)
+    Button registerButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,12 +52,14 @@ public class LoginFragment extends BaseFragment {
             }
         });
 
+        forgotPasswordButton.setOnClickListener(this);
+        registerButton.setOnClickListener(this);
+
         return v;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        EventBus.getDefault().post(new TitleEvent(getString(R.string.app_name)));
+    public void onClick(View v) {
+        Toast.makeText(getContext(), "Nothing happened =)", Toast.LENGTH_SHORT).show();
     }
 }
