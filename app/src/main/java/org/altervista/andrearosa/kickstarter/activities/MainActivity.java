@@ -9,7 +9,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,28 +21,18 @@ import org.altervista.andrearosa.kickstarter.events.TitleEvent;
 import org.altervista.andrearosa.kickstarter.fragments.HomeFragment;
 import org.altervista.andrearosa.kickstarter.fragments.LoginFragment;
 import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
-import org.altervista.andrearosa.kickstarter.misc.App;
 import org.altervista.andrearosa.kickstarter.misc.Utils;
-import org.altervista.andrearosa.kickstarter.services.RestClient;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import retrofit2.Call;
 
 /**
  * Created by andre on 18/04/16.
  * <p/>
  * kickstarter-android.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     public static final String TAG = "MainActivity";
 
@@ -56,20 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle drawerToggle;
 
-    @Inject
-    RestClient restClient;
-
-    private List<Call> calls = new ArrayList<>();
-
-    private Unbinder unbinder;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
 
-        (((App) getApplication()).getApplicationComponent()).inject(MainActivity.this);
-        unbinder = ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
         EventBus.getDefault().register(this);
@@ -193,18 +173,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-
-        for (Call call : calls) {
-            call.cancel();
-        }
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
         EventBus.getDefault().unregister(this);
     }
 }

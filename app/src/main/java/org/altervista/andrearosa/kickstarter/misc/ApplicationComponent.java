@@ -1,6 +1,6 @@
 package org.altervista.andrearosa.kickstarter.misc;
 
-import org.altervista.andrearosa.kickstarter.activities.MainActivity;
+import org.altervista.andrearosa.kickstarter.activities.BaseActivity;
 import org.altervista.andrearosa.kickstarter.fragments.BaseFragment;
 
 import javax.inject.Singleton;
@@ -15,7 +15,6 @@ import dagger.Component;
 @Singleton
 @Component(modules = {ApplicationModule.class})
 public interface ApplicationComponent {
-    void inject(MainActivity activity);
-
+    void inject(BaseActivity activity);
     void inject(BaseFragment fragment);
 }

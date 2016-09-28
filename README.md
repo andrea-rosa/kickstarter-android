@@ -15,6 +15,23 @@ git clone https://github.com/andrea-rosa/kickstarter-android.git
 ```
 Then open it in Android Studio and wait for gradle build
 
+### Activities
+Define your layout (e.g. `activity_main`)  
+Create a class and extend `BaseActivity`  
+Override `onCreate` like this
+```java
+public class MainActivity extends BaseActivity {
+   ...
+   @Override
+		   protected void onCreate(Bundle savedInstanceState) {
+	        setContentView(R.layout.activity_main);
+	        super.onCreate(savedInstanceState);
+       }
+   ...
+}
+```
+BasicActivity provide the rest interface and the butterknife binder
+
 ### Fragments
 Define your layout (e.g. `fragment_home`)  
 Create a class and extend `BaseFragment`  
@@ -35,7 +52,7 @@ Then use the fragment transaction method in `Utils` class
 Utils.fragmentTransaction(new HomeFragment(), R.id.flContent, HomeFragment.TAG, true, getSupportFragmentManager());
 ```
 
-BasicFragment provide the rest interface, the otto bus and the butterknife binder
+BasicFragment provide the rest interface and the butterknife binder
 
 ### Preference Helper
 To save values in preferences use
