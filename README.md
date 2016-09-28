@@ -40,16 +40,17 @@ BasicFragment provide the rest interface, the otto bus and the butterknife binde
 ### Preference Helper
 To save values in preferences use
 ```java
-PreferenceHelper.setString(myKey, myValue, context);
+PrefHelper.setString(myKey, myValue, context);
 ```
 And to retrieve a value use
 ```java
-PreferenceHelper.getString(myKey, defaultValue, context);
+PrefHelper.getString(myKey, defaultValue, context);
 ```
-PreferenceHelper support the following types:
-* `String`
-* `Set<String>`
-* `int`
-* `float`
-* `long`
-* `boolean`
+To save a custom object add it to the PrefName class and then save as
+```java
+PrefHelper.setPreference({PrefName.OBJ}, <T> value, context);
+```
+And to retrieve use
+```java
+PrefHelper.getPreference({PrefName.OBJ}, context);
+```
