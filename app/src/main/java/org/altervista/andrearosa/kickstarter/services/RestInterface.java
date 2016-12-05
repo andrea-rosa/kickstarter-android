@@ -1,6 +1,5 @@
 package org.altervista.andrearosa.kickstarter.services;
 
-import org.altervista.andrearosa.kickstarter.dto.Photo;
 import org.altervista.andrearosa.kickstarter.dto.Post;
 import org.altervista.andrearosa.kickstarter.dto.User;
 
@@ -19,9 +18,6 @@ public interface RestInterface {
     // XXX test api
     @GET("users")
     Call<List<User>> getUsers();
-
-    @GET("photos")
-    Call<List<Photo>> getPhotos();
 
     @GET("posts")
     Call<List<Post>> getPosts();

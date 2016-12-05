@@ -1,9 +1,9 @@
 # kickstarter-android
-An Android kickstarter project including the following libraries:
+An Android fully materialized kickstarter project including the following libraries:
 
 * [ButterKnife](http://jakewharton.github.io/butterknife/)
 * [Retrofit](http://square.github.io/retrofit/)
-* [Picasso](http://square.github.io/picasso/)
+* [Glide](https://github.com/bumptech/glide)
 * [Parceler](https://github.com/johncarl81/parceler)
 * [Dagger2](http://google.github.io/dagger/)
 * [EventBus](http://greenrobot.org/eventbus/)

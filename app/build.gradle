@@ -21,7 +21,7 @@ android {
 }
 
 // Support library version
-ext.slv = "25.0.0"
+ext.slv = "25.0.1"
 
 dependencies {
     compile fileTree(include: ["*.jar"], dir: "libs")
@@ -43,8 +43,8 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:2.1.0"
     compile "com.squareup.okhttp3:okhttp:3.4.1"
 
-    // Picasso
-    compile "com.squareup.picasso:picasso:2.5.2"
+    // Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 
     // Parceler
     compile "org.parceler:parceler-api:1.1.6"
