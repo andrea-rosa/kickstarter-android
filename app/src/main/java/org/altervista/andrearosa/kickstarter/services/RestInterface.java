@@ -15,12 +15,11 @@ import retrofit2.http.GET;
  */
 public interface RestInterface {
 
-    // XXX test api
+    // Test api
     @GET("users")
     Call<List<User>> getUsers();
 
     @GET("posts")
     Call<List<Post>> getPosts();
 
-    // TODO
 }
