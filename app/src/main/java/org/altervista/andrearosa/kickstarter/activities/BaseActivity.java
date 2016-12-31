@@ -22,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
 
     Unbinder unbinder;
 
-    private List<Call> calls = new ArrayList<>();
+    protected List<Call> calls = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
