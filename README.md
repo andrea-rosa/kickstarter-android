@@ -21,13 +21,13 @@ Create a class and extend `BaseActivity`
 Override `onCreate` like this
 ```java
 public class MainActivity extends BaseActivity {
-   ...
-   @Override
-		   protected void onCreate(Bundle savedInstanceState) {
-	        setContentView(R.layout.activity_main);
-	        super.onCreate(savedInstanceState);
-       }
-   ...
+    ...
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+    }
+    ...
 }
 ```
 BasicActivity provide the rest interface and the butterknife binder
@@ -38,13 +38,13 @@ Create a class and extend `BaseFragment`
 Override `onCreateView` and initialize `layout` before inflate the view
 ```java
 public class HomeFragment extends BaseFragment {
-   ...
-   @Override
-       public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-           this.layout = R.layout.fragment_home;
-           return super.onCreateView(inflater, container, savedInstanceState);
-       }
-   ...
+    ...
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        this.layout = R.layout.fragment_home;
+        return super.onCreateView(inflater, container, savedInstanceState);
+    }
+    ...
 }
 ```
 Then use the TransactionManager builder
