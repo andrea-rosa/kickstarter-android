@@ -3,7 +3,6 @@ package org.altervista.andrearosa.kickstarter.activities;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -22,7 +21,7 @@ import org.altervista.andrearosa.kickstarter.events.TitleEvent;
 import org.altervista.andrearosa.kickstarter.fragments.HomeFragment;
 import org.altervista.andrearosa.kickstarter.fragments.LoginFragment;
 import org.altervista.andrearosa.kickstarter.fragments.PostsFragment;
-import org.altervista.andrearosa.kickstarter.misc.Utils;
+import org.altervista.andrearosa.kickstarter.misc.TransactionManager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
@@ -65,10 +64,22 @@ public class MainActivity extends BaseActivity {
 
                 switch (item.getItemId()) {
                     case R.id.nav_login_fragment:
-                        Utils.fragmentTransaction(new LoginFragment(), R.id.flContent, LoginFragment.TAG, true, getSupportFragmentManager());
+                        TransactionManager
+                                .with(getSupportFragmentManager())
+                                .add(new LoginFragment())
+                                .tag(LoginFragment.TAG)
+                                .inStack(true)
+                                .animated(true)
+                                .into(R.id.flContent);
                         break;
                     case R.id.nav_posts_fragment:
-                        Utils.fragmentTransaction(new PostsFragment(), R.id.flContent, PostsFragment.TAG, true, getSupportFragmentManager());
+                        TransactionManager
+                                .with(getSupportFragmentManager())
+                                .add(new PostsFragment())
+                                .tag(PostsFragment.TAG)
+                                .inStack(true)
+                                .animated(true)
+                                .into(R.id.flContent);
                         break;
                 }
 
@@ -81,7 +92,11 @@ public class MainActivity extends BaseActivity {
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
 
-        Utils.fragmentTransaction(new HomeFragment(), R.id.flContent, HomeFragment.TAG, false, getSupportFragmentManager());
+        TransactionManager
+                .with(getSupportFragmentManager())
+                .add(new HomeFragment())
+                .tag(HomeFragment.TAG)
+                .into(R.id.flContent);
     }
 
     @Subscribe

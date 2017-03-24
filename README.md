@@ -47,9 +47,14 @@ public class HomeFragment extends BaseFragment {
    ...
 }
 ```
-Then use the fragment transaction method in `Utils` class
+Then use the TransactionManager builder
 ```java
-Utils.fragmentTransaction(new HomeFragment(), R.id.flContent, HomeFragment.TAG, true, getSupportFragmentManager());
+TransactionManager
+        .with(getSupportFragmentManager())
+        .add(new HomeFragment())
+        .tag(HomeFragment.TAG)
+        .animated(false)
+        .into(R.id.flContent);
 ```
 
 BasicFragment provide the rest interface and the butterknife binder
