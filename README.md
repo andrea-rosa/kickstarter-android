@@ -3,8 +3,10 @@ An Android fully materialized kickstarter project including the following librar
 
 * [ButterKnife](http://jakewharton.github.io/butterknife/)
 * [Retrofit](http://square.github.io/retrofit/)
+* [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 * [Glide](https://github.com/bumptech/glide)
 * [Parceler](https://github.com/johncarl81/parceler)
+* [Hawk](https://github.com/orhanobut/hawk)
 * [Dagger2](http://google.github.io/dagger/)
 * [EventBus](http://greenrobot.org/eventbus/)
 
@@ -59,19 +61,5 @@ TransactionManager
 
 BasicFragment provide the rest interface and the butterknife binder
 
-### Preference Helper
-To save values in preferences use
-```java
-PreferenceHelper.setString(myKey, myValue, context);
-```
-And to retrieve a value use
-```java
-PreferenceHelper.getString(myKey, defaultValue, context);
-```
-PreferenceHelper support the following types:
-* `String`
-* `Set<String>`
-* `int`
-* `float`
-* `long`
-* `boolean`
+##### Notes 
+The app make calls to [JsonPlaceholder](https://jsonplaceholder.typicode.com/) for mocking data

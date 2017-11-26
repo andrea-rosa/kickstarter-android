@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="5dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
+        <variable
+            name="viewModel"
+            type="it.andrearosa.kickstarter.viewModel.PostViewModel" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/postAdapter_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Title"
-        android:ellipsize="end"
-        android:textColor="@android:color/black"
-        android:id="@+id/postTitle_textView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_margin="4dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardUseCompatPadding="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Body"
-        android:layout_marginTop="5dp"
-        android:id="@+id/postBody_textView"
-        android:maxLines="3"
-        android:layout_below="@+id/postTitle_textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{viewModel.onPostClick()}"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Author"
-        android:layout_marginTop="5dp"
-        android:id="@+id/postAuthor_textView"
-        android:layout_below="@+id/postBody_textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.title}"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.body}"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@{viewModel.username}"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>
