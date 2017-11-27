@@ -1,6 +1,7 @@
 package it.andrearosa.kickstarter.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class BaseFragment extends Fragment {
     private Unbinder unbinder;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (layout == 0)
             throw new IllegalStateException("Layout must be initialized first!");
         View v = inflater.inflate(layout, container, false);

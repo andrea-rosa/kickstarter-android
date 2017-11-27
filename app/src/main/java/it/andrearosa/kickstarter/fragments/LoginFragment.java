@@ -1,6 +1,7 @@
 package it.andrearosa.kickstarter.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     Button registerButton;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.layout = R.layout.fragment_login;
 
         View v = super.onCreateView(inflater, container, savedInstanceState);

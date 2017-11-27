@@ -14,7 +14,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import it.andrearosa.kickstarter.misc.AppConstants;
+import it.andrearosa.kickstarter.BuildConfig;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -43,7 +43,7 @@ public class RestClient {
                     .create();
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(AppConstants.BASE_URL)
+                    .baseUrl(BuildConfig.BASE_URL)
                     .client(httpClient)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

@@ -2,6 +2,8 @@ package it.andrearosa.kickstarter.misc;
 
 import android.app.Application;
 
+import com.orhanobut.hawk.Hawk;
+
 /**
  * Created by andre on 18/04/16.
  * <p/>
@@ -14,6 +16,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         initializeInjector();
+
+        Hawk.init(getApplicationContext());
     }
 
     private void initializeInjector() {

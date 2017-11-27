@@ -56,37 +56,34 @@ public class MainActivity extends BaseActivity {
 
         toolbar.setNavigationIcon(R.drawable.ic_menu);
 
-        nvView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
+        nvView.setNavigationItemSelectedListener(item -> {
 
-                clearBackStack();
+            clearBackStack();
 
-                switch (item.getItemId()) {
-                    case R.id.nav_login_fragment:
-                        TransactionManager
-                                .with(getSupportFragmentManager())
-                                .add(new LoginFragment())
-                                .tag(LoginFragment.TAG)
-                                .inStack(true)
-                                .animated(true)
-                                .into(R.id.flContent);
-                        break;
-                    case R.id.nav_posts_fragment:
-                        TransactionManager
-                                .with(getSupportFragmentManager())
-                                .add(new PostsFragment())
-                                .tag(PostsFragment.TAG)
-                                .inStack(true)
-                                .animated(true)
-                                .into(R.id.flContent);
-                        break;
-                }
-
-                item.setChecked(true);
-                drawerLayout.closeDrawers();
-                return true;
+            switch (item.getItemId()) {
+                case R.id.nav_login_fragment:
+                    TransactionManager
+                            .with(getSupportFragmentManager())
+                            .add(new LoginFragment())
+                            .tag(LoginFragment.TAG)
+                            .inStack(true)
+                            .animated(true)
+                            .into(R.id.flContent);
+                    break;
+                case R.id.nav_posts_fragment:
+                    TransactionManager
+                            .with(getSupportFragmentManager())
+                            .add(new PostsFragment())
+                            .tag(PostsFragment.TAG)
+                            .inStack(true)
+                            .animated(true)
+                            .into(R.id.flContent);
+                    break;
             }
+
+            item.setChecked(true);
+            drawerLayout.closeDrawers();
+            return true;
         });
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
@@ -158,7 +155,9 @@ public class MainActivity extends BaseActivity {
     public void hideKeyboard() {
         if (getCurrentFocus() != null && getCurrentFocus().getWindowToken() != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
         }
     }
 
