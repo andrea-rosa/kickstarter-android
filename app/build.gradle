@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "it.andrearosa.kickstarter"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -31,51 +31,64 @@ android {
     }
 }
 
-// Support library version
-ext.slv = "27.0.1"
+// Libraries versions
+ext.androidSupport = "27.1.0"
+ext.butterknife = "8.8.1"
+ext.gson = "2.8.2"
+ext.retrofit = "2.3.0"
+ext.okhttp = "3.10.0"
+ext.rxAndroid = "2.0.2"
+ext.rxJava = "2.1.10"
+ext.glide = "4.6.1"
+ext.parceler = "1.1.10"
+ext.hawk = "2.0.1"
+ext.javaPoet = "1.10.0"
+ext.dagger2 = "2.14.1"
+ext.eventBus = "3.0.0"
 
 dependencies {
     compile fileTree(include: ["*.jar"], dir: "libs")
     testCompile "junit:junit:4.12"
 
     // Android support
-    compile "com.android.support:appcompat-v7:$slv"
-    compile "com.android.support:support-v4:$slv"
-    compile "com.android.support:design:$slv"
-    compile "com.android.support:recyclerview-v7:$slv"
-    compile "com.android.support:cardview-v7:$slv"
+    compile "com.android.support:appcompat-v7:$androidSupport"
+    compile "com.android.support:support-v4:$androidSupport"
+    compile "com.android.support:design:$androidSupport"
+    compile "com.android.support:recyclerview-v7:$androidSupport"
+    compile "com.android.support:cardview-v7:$androidSupport"
 
     // Butterknife
-    compile "com.jakewharton:butterknife:8.6.0"
-    annotationProcessor "com.jakewharton:butterknife-compiler:8.6.0"
+    compile "com.jakewharton:butterknife:$butterknife"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife"
 
     // Retrofit
-    compile "com.google.code.gson:gson:2.8.1"
-    compile "com.squareup.retrofit2:retrofit:2.3.0"
-    compile "com.squareup.retrofit2:converter-gson:2.3.0"
-    compile "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
-    compile "com.squareup.okhttp3:okhttp:3.8.0"
+    compile "com.google.code.gson:gson:$gson"
+    compile "com.squareup.retrofit2:retrofit:$retrofit"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit"
+    compile "com.squareup.okhttp3:okhttp:$okhttp"
 
     // RxJava
-    compile "io.reactivex.rxjava2:rxandroid:2.0.1"
-    compile "io.reactivex.rxjava2:rxjava:2.1.6"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    compile "io.reactivex.rxjava2:rxjava:$rxJava"
 
     // Glide
-    compile 'com.github.bumptech.glide:glide:4.1.1'
+    compile "com.github.bumptech.glide:glide:$glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide"
 
     // Parceler
-    compile "org.parceler:parceler-api:1.1.6"
-    annotationProcessor "org.parceler:parceler:1.1.6"
+    compile "org.parceler:parceler-api:$parceler"
+    annotationProcessor "org.parceler:parceler:$parceler"
 
     // Hawk
-    compile 'com.orhanobut:hawk:2.0.1'
+    compile "com.orhanobut:hawk:$hawk"
 
     // Dagger2
-    annotationProcessor "com.squareup:javapoet:1.9.0"
-    annotationProcessor "com.google.dagger:dagger-compiler:2.11"
-    compile "com.google.dagger:dagger:2.11"
+    annotationProcessor "com.squareup:javapoet:$javaPoet"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2"
+    compile "com.google.dagger:dagger:$dagger2"
     provided "javax.annotation:jsr250-api:1.0"
 
     // EventBus
-    compile "org.greenrobot:eventbus:3.0.0"
+    compile "org.greenrobot:eventbus:$eventBus"
 }
