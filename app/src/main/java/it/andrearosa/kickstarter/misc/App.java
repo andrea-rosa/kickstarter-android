@@ -17,7 +17,7 @@ public class App extends Application {
         super.onCreate();
         initializeInjector();
 
-        Hawk.init(getApplicationContext());
+        Hawk.init(getApplicationContext()).build();
     }
 
     private void initializeInjector() {
